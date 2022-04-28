@@ -223,7 +223,8 @@ importers:
       lodash: ^4.17.15
       rimraf: ^3.0.2
       typechain: workspace:^8.0.0
-      typescript: ^4
+      typescript: ^4.6.3
+      zod: ^3.14.4
     dependencies:
       fs-extra: 9.1.0
       lodash: 4.17.21
@@ -239,7 +240,8 @@ importers:
       hardhat: 2.9.1
       rimraf: 3.0.2
       typechain: link:../typechain
-      typescript: 4.6.2
+      typescript: 4.6.3
+      zod: 3.14.4
 
   packages/hardhat-test:
     specifiers:
@@ -13421,6 +13423,12 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
+  /typescript/4.6.3:
+    resolution: {integrity: sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
   /typewise-core/1.2.0:
     resolution: {integrity: sha1-l+uRgFx/VdL5QXSPpQ0xXZke8ZU=}
     dev: true
@@ -15157,6 +15165,10 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod/3.14.4:
+    resolution: {integrity: sha512-U9BFLb2GO34Sfo9IUYp0w3wJLlmcyGoMd75qU9yf+DrdGA4kEx6e+l9KOkAlyUO0PSQzZCa3TR4qVlcmwqSDuw==}
+    dev: true
 
   github.com/Digital-MOB-Filecoin/filecoin-signing-tools-js/8f8e92157cac2556d35cab866779e9a8ea8a4e25:
     resolution: {tarball: https://codeload.github.com/Digital-MOB-Filecoin/filecoin-signing-tools-js/tar.gz/8f8e92157cac2556d35cab866779e9a8ea8a4e25}

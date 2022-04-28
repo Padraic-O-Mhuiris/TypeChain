@@ -1,3 +1,5 @@
+import { StaticsConfig } from './statics/config'
+
 export interface TypechainUserConfig {
   outDir?: string
   target?: string
@@ -13,4 +15,8 @@ export interface TypechainConfig {
   discriminateTypes: boolean
   tsNocheck: boolean
   externalArtifacts?: string[]
+}
+
+export type HardhatTypechainConfig = TypechainConfig & {
+  statics?: StaticsConfig
 }

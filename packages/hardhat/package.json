@@ -45,7 +45,8 @@
     "hardhat": "^2.0.10",
     "rimraf": "^3.0.2",
     "typechain": "workspace:^8.0.0",
-    "typescript": "^4"
+    "typescript": "^4",
+    "zod": "^3.14.4"
   },
   "peerDependencies": {
     "@ethersproject/abi": "^5.4.7",
