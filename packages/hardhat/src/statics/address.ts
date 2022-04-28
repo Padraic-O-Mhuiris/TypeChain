@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { z } from 'zod'
 
-export type Address = string & { readonly __brand: 'address' }
+export type Address = string & { readonly Address: unique symbol }
 
 export const isAddress = (x: string): x is Address => ethers.utils.isAddress(x)
 

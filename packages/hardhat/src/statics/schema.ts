@@ -1,7 +1,7 @@
 import { keys } from 'lodash'
 import { z } from 'zod'
 
-import { createTaggedAddressSchema, TagAddress, TaggedAddressSchema } from './address'
+import { createTaggedAddressSchema, TaggedAddressSchema } from './address'
 
 type ZodTupleLiterals<T extends readonly [...any[]]> = T extends [infer Head, ...infer Tail]
   ? [z.ZodLiteral<Head>, ...ZodTupleLiterals<Tail>]
@@ -38,9 +38,7 @@ type ContractsSchema<Model extends IModel> = z.ZodObject<{
 }>
 
 type MetadataSchema<Model extends IModel> = z.ZodObject<{
-  [k in ObjectKeysToTuple<Model>[number]]: z.ZodObject<{
-    [r in TagAddress<k>]: Model[k]['schema']
-  }>
+  [k in ObjectKeysToTuple<Model>[number]]: z.ZodRecord<TaggedAddressSchema<k>, Model[k]['schema']>
 }>
 
 export type Schema<Model extends IModel> = z.ZodObject<{
@@ -89,12 +87,10 @@ export const createSchema = <Model extends IModel>(model: Model): Schema<Model> 
     modelKeys.reduce(
       (acc, arg) => ({
         ...acc,
-        [arg]: z.record(createTaggedAddressSchema(arg), model[arg].schema), // change outcome type to partial
+        [arg]: z.record(createTaggedAddressSchema(arg), model[arg].schema),
       }),
       {} as {
-        [k in ObjectKeysToTuple<Model>[number]]: z.ZodObject<{
-          [r in TagAddress<k>]: Model[k]['schema']
-        }>
+        [k in ObjectKeysToTuple<Model>[number]]: z.ZodRecord<TaggedAddressSchema<k>, Model[k]['schema']>
       },
     ),
   )
