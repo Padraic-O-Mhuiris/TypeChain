@@ -1,8 +1,11 @@
-import { IModel, InferredSchema, Schema } from './schema'
+import { GenerateDataModel } from './config'
+import { createSchema, IModel } from './schema'
 
-export async function generate<S extends Schema<IModel>>(schema: S, generate: () => Promise<InferredSchema<S>>) {
-  const fetchResult = await generate()
-  const schemaResult = schema.safeParse(fetchResult)
+export async function generate<M extends IModel>(model: M, generate: GenerateDataModel<M>) {
+  const data = await generate()
+
+  const schemaResult = createSchema(model).safeParse(data)
+
   if (schemaResult.success) {
     // eslint-disable-next-line
     console.log('Schema parsed successfully')
@@ -11,5 +14,7 @@ export async function generate<S extends Schema<IModel>>(schema: S, generate: ()
   } else {
     // eslint-disable-next-line
     console.log('Schema parse failed')
+    // eslint-disable-next-line
+    console.error(schemaResult.error.toString())
   }
 }

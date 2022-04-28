@@ -1,9 +1,9 @@
 import { DataModel, IModel } from './schema'
 
-export type GenerateStatics<Model extends IModel> = () => Promise<DataModel<Model>>
+export type GenerateDataModel<Model extends IModel> = () => Promise<DataModel<Model>>
 
 export interface GenericStaticsConfig<Model extends IModel> {
-  generate: GenerateStatics<Model>
+  generate: GenerateDataModel<Model>
   model: Model
 }
 
@@ -16,5 +16,3 @@ export const createStaticsConfig = <M extends IModel>(
   model,
   generate,
 })
-
-//export type createStaticsFunction = <M extends IModel>(model: M, generate: () => Promise<DataModel<M>>)

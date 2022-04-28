@@ -48,8 +48,6 @@ export type Schema<Model extends IModel> = z.ZodObject<{
   metadata: MetadataSchema<Model>
 }>
 
-export type InferredSchema<S extends Schema<IModel>> = z.infer<S>
-
 export type DataModel<M extends IModel> = z.infer<Schema<M>>
 
 export const createSchema = <Model extends IModel>(model: Model): Schema<Model> => {
